@@ -9,7 +9,10 @@
 
 <head>
     <?php
+    include '../../../Config/app.php';
     $theme_assets = '../../../assets/theme/';
+    $errors = $_SESSION;
+    session_destroy();
     include "layouts/header.php";
     ?>
 </head>
@@ -21,34 +24,58 @@
                 <div class="col-md-6">
                     <div class="card mb-4 mx-4">
                         <div class="card-body p-4">
+
                             <h1>Register</h1>
                             <p class="text-body-secondary">Create your account</p>
-                            <div class="input-group mb-3"><span class="input-group-text">
-                                    <svg class="icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                            <form class="mt-5 m-3" action="../../controller/RegisterController.php" method="POST">
+                                <div class="input-group mb-3"><span class="input-group-text">
+                                        <svg class="icon">
+                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
 
-                                    </svg></span>
-                                <input class="form-control" type="text" placeholder="Username">
-                            </div>
-                            <div class="input-group mb-3"><span class="input-group-text">
-                                    <svg class="icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-                                    </svg></span>
-                                <input class="form-control" type="text" placeholder="Email">
-                            </div>
-                            <div class="input-group mb-3"><span class="input-group-text">
-                                    <svg class="icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                                    </svg></span>
-                                <input class="form-control" type="password" placeholder="Password">
-                            </div>
-                            <div class="input-group mb-4"><span class="input-group-text">
-                                    <svg class="icon">
-                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                                    </svg></span>
-                                <input class="form-control" type="password" placeholder="Repeat password">
-                            </div>
-                            <button class="btn btn-block btn-success" type="button">Create Account</button>
+                                        </svg></span>
+                                    <input class="form-control" name="name" type="text" placeholder="Username"><br>
+                                    <?php
+                                    if (isset($errors['nameErr'])) { ?>
+                                        <p class="text-danger"><?php echo $errors['nameErr'] ?></p>
+                                    <?php  } ?>
+                                </div>
+                                <div class="input-group mb-3"><span class="input-group-text">
+                                        <svg class="icon">
+                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                                        </svg></span>
+                                    <input class="form-control" name="email" type="text" placeholder="Email"><br>
+                                    <?php
+                                    if (isset($errors['emailErr'])) { ?>
+                                        <p class="text-danger"><?php echo $errors['emailErr'] ?></p>
+                                    <?php  } ?>
+                                </div>
+                                <div class="input-group mb-3"><span class="input-group-text">
+                                        <svg class="icon">
+                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                                        </svg></span>
+                                    <input class="form-control" name="password" type="password" placeholder="Password"><br>
+                                    <?php
+                                    if (isset($errors['passwordErr'])) { ?>
+                                        <p class="text-danger"><?php echo $errors['passwordErr'] ?></p>
+                                    <?php  } ?>
+                                </div>
+                                <div class="input-group mb-4"><span class="input-group-text">
+                                        <svg class="icon">
+                                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                                        </svg></span>
+                                    <input class="form-control" name="password" type="password" placeholder="Repeat password"><br>
+                                    <?php
+                                    if (isset($errors['passwordErr'])) { ?>
+                                        <p class="text-danger"><?php echo $errors['passwordErr'] ?></p>
+                                    <?php  } ?>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn btn-block btn-success" type="submit">Create Account</button>
+                                    <a href="../../views/auth/login.php">
+                                        <p>Already have an account</p>
+                                    </a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
