@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Prevent directory listing
+Options -Indexes
+
+# Allow direct access to certain asset file extensions
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|css|js|ico|svg)$ [NC]
+RewriteRule ^ - [L]
+
+# Redirect all directory access requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]
