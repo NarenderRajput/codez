@@ -1,17 +1,10 @@
-<!DOCTYPE html><!--
-* CoreUI - Free Bootstrap Admin Template
-* @version v5.0.0
-* @link https://coreui.io/product/free-bootstrap-admin-template/
-* Copyright (c) 2024 creativeLabs Łukasz Holeczek
-* Licensed under MIT (https://github.com/coreui/coreui-free-bootstrap-admin-template/blob/main/LICENSE)
--->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    include "../../../Config/app.php";
-    $theme_assets = '../../../assets/theme/';
-    include "layouts/header.php";
+    $theme_assets = 'assets/theme/';
+    include "src/views/auth/layouts/header.php";
     ?>
 </head>
 
@@ -25,7 +18,7 @@
                             <div class="card-body">
                                 <h1>Login</h1>
                                 <p class="text-body-secondary">Sign In to your account</p>
-                                <form class="mt-5 m-3" action="../../controller/LogInController.php" method="POST">
+                                <form class="mt-5 m-3" action="<?php echo "admin/login" ?>" method="POST">
                                 <?php 
                                 if (isset($_SESSION["loginErr"])) { ?>
                                 <p class="text-danger"><?php echo $_SESSION["loginErr"]; ?> </p>    
@@ -67,7 +60,7 @@
                                 <div>
                                     <h2>Sign up</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    <a href="../auth/register.php"><button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button></a>
+                                    <a href="register.php"><button class="btn btn-lg btn-outline-light mt-3" type="button">Register Now!</button></a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +71,7 @@
     </div>
     <!-- CoreUI and necessary plugins-->
     <?php
-    include "layouts/footer.php";
+        include "src/views/auth/layouts/footer.php";
     ?>
 
 </body>

@@ -9,11 +9,11 @@
 
 <head>
     <?php
-    include '../../../Config/app.php';
-    $theme_assets = '../../../assets/theme/';
+    include 'config/app.php';
+    $theme_assets = 'assets/theme/';
     $errors = $_SESSION;
     session_destroy();
-    include "layouts/header.php";
+    include "src/views/auth/layouts/header.php";
     ?>
 </head>
 
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <button class="btn btn-block btn-success" type="submit">Create Account</button>
-                                    <a href="../../views/auth/login.php">
+                                    <a href="login.php">
                                         <p>Already have an account</p>
                                     </a>
                                 </div>
@@ -84,7 +84,7 @@
     </div>
     <!-- CoreUI and necessary plugins-->
     <?php
-    include "layouts/footer.php";
+    include "src/views/auth/layouts/footer.php";
     ?>
 
 </body>

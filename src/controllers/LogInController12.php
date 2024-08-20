@@ -28,37 +28,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_SESSION['emailErr']) && isset($_SESSION['passwordErr'])) {
         header('location: ../views/auth/login.php');
     } else {
-    
+
         if (empty($emailErr) && empty($passwordErr)) {
-        check_data($email, $password, $conn);
+            check_data($email, $password, $conn);
         }
     }
-
-
 }
 
 
-function test_input($data) {
+function test_input($data)
+{
     $data = trim($data);
     $data = stripcslashes($data);
     $data = htmlspecialchars($data);
     return $data;
-  }
-  
-  function check_data($email, $password, $conn) {
+}
+
+function check_data($email, $password, $conn)
+{
     $sql = "SELECT * FROM users WHERE email = '$email' and password = '$password'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $_SESSION['users'] = $row;
         }
-        header('location: ../views/dashboard.php');  
-        exit;     
-    } 
+        header('location: ../views/dashboard.php');
+        exit;
+    }
     mysqli_close($conn);
     $_SESSION["loginErr"] = "invalid credential";
     header("location: ../views/auth/login.php");
 }
-
-
-?>

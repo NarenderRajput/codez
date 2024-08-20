@@ -1,15 +1,11 @@
-<!DOCTYPE html><!--
-* CoreUI - Free Bootstrap Admin Template
-* @version v5.0.0
-* @link https://coreui.io/product/free-bootstrap-admin-template/
-* Copyright (c) 2024 creativeLabs Łukasz Holeczek
-* Licensed under MIT (https://github.com/coreui/coreui-free-bootstrap-admin-template/blob/main/LICENSE)
--->
+<?php if (false === defined('BASE_URL')) { echo "Invalid Access!";exit; } ?>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <?php
-    $theme_assets = "../../assets/theme/";
-    include "layouts/header.php";
+    $theme_assets = "assets/theme/";
+    include "src/views/auth/layouts/header.php";
     ?>
   </head>
   <body>
@@ -34,7 +30,7 @@
     </div>
     <div class="wrapper d-flex flex-column min-vh-100">
     <?php
-        include 'layouts/top_menu.php';
+        include_view('layouts/top_menu');
      ?>
       <div class="body flex-grow-1">
         <div class="container-lg px-4">
@@ -799,7 +795,7 @@
     </div>
     <!-- CoreUI and necessary plugins-->
     <?php
-    include "layouts/footer.php";
+      include "src/views/auth/layouts/footer.php";
     ?>
     <!-- Plugins and scripts required by this view-->
     <script src="<?php echo $theme_assets . 'vendors/chart.js/js/chart.umd.js' ?>"></script>
